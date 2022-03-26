@@ -34,9 +34,9 @@ async function getAccount2() {
   showAccount.innerHTML = account;
 }
 
-function sign(){
-    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-    const account = accounts[0];
+async function sign(){
+  const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+  const account = accounts[0];
     var from = ethereum.selectedAddress;
     console.log(from);
     console.log(web3.eth.getBlock('latest'))
