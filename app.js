@@ -35,7 +35,8 @@ async function getAccount2() {
 }
 
 function sign(){
-var from = ethereum.selectedAddress;
+    var from = ethereum.selectedAddress;
+    console.log(from);
     var params = ['test',from];
     var method = 'personal_sign';
 
