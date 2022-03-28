@@ -1,14 +1,30 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<head>
+  <head>
+    <title>Metamask Demo</title>
 
-</head>
-<body>
-<button class="enableEthereumButton">Enable Ethereum</button>
-<button class="enableEthereumButton2">Enable Ethereum2</button>
-<button class="enableEthereumButton3">Enable Ethereum3</button>
-<button class="enableEthereumButton4">Enable Ethereum4</button>
-<button class="enableEthereumButton5">Enable Ethereum5</button>
-</body>
-<script src="app.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+	<script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+  </head>
+
+  <body>
+
+	<button onclick="login()">Login with Metamask</button>
+
+	<script>
+		Moralis.initialize("APPLICATION_ID"); // Application id from moralis.io
+		Moralis.serverURL = "SERVER_URL"; //Server url from moralis.io
+
+		async function login(){
+			console.log("login clicked");
+			var user = await Moralis.Web3.authenticate();
+			if(user){
+				console.log(user);
+				user.set("nickname","VITALIK");
+				user.set("fav_color","blue");
+				user.save();
+			}
+		}
+
+	</script>
+  </body>
 </html>
